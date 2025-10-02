@@ -15,6 +15,20 @@ public class Player : MonoBehaviour
     private List<GameObject> _earnedCoins = new List<GameObject>();
     private bool _waitingToRespawn;
 
+    public static Player instance;
+
+    private void Awake()
+    {
+        if (Player.instance == null)
+        {
+            Player.instance = this;
+        }
+        else
+        {
+            Debug.Log("More than one player is in the scene!");
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("Points"))
