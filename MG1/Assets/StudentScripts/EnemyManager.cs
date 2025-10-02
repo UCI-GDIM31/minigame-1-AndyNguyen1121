@@ -14,6 +14,11 @@ public class EnemyManager : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
+    private void Start()
+    {
+        EnemySpawnerManager.instance.AddActiveEnemy(gameObject);
+    }
+
     private void Update()
     {
         HandleEnemyBehavior();
@@ -33,6 +38,8 @@ public class EnemyManager : MonoBehaviour
     public void DestroyEnemy()
     {
         Instantiate(hitParticle, transform.position, Quaternion.identity);
+        EnemySpawnerManager.instance.RemoveEnemy(gameObject);
+        Player.instance.AddEnemyPoint();
         Destroy(gameObject);
     }
 

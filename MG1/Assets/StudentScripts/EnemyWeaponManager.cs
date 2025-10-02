@@ -4,10 +4,12 @@ public class EnemyWeaponManager : MonoBehaviour
 {
     private Collider weaponCollider;
     public LayerMask whatIsPlayer;
+    public EnemyManager enemyManager;
 
     private void Awake()
     {
         weaponCollider = GetComponent<Collider>();
+
     }
 
     private void OnTriggerEnter(Collider other)
